@@ -71,6 +71,27 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        for (int i = 0; i < table.length; i++) {
+            if (table[0][i] == 1) {                        //  проходим все элементы нулевой строки, проверяем на единицу
+                for (int j = 0; j < table.length; j++) {   //  если попалась единица, проходим все элементы столбца
+                    if (table[j][i] == 0) {                //  если попадается ноль, в результат пишем false, обрываем цикл
+                        result = false;
+                        break;
+                    }
+                    result = true;                         //  если ноль не попался, значит все единицы, результат true
+                }
+            }
+
+            if (table[i][0] == 1) {                        //  теперь проходим все элементы нулевого столбца, проверяем на единицу
+                for (int j = 0; j < table.length; j++) {   //  если попалась единица, проходим все элементы строки
+                    if (table[i][j] == 0) {                //  если попадается ноль, в результат пишем false, обрываем цикл
+                        result = false;
+                        break;
+                    }
+                    result = true;                         //  если ноль не попался, значит все единицы, результат true
+                }
+            }
+        }
         return result;
     }
 
